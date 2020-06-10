@@ -31,28 +31,28 @@ router.post('/login', async (req, res) => {
         res.render('login', {err: "Please provide all credentials"});
         return;
     }
-   let userName = await User.findOne({userName: req.body.userName})
+   let userName = await User.findOne({userName: req.body.userName});
 
    if (userName == null) {
     res.render('login', {err: "that username doesn't exist.."});
-    return; }
-
+    return; 
+}
 
     if (userName.password == req.body.password) {
-   res.render('profile', {user:user.toObject()});
+   res.render('profile', {user: user.toObject()});
    return;
     }
 
-   res.render('login',{err: "the password is incorrect"});
+   res.render('login', {err: "the password is incorrect"});
    
-}
+});
 
 router.post('/login', (req, res) => {
     res.redirect('/profile');
-})
+});
 
 router.post('/signup', async (req, res) => {
-    if (!req.body.userName || !req.body.email || !req.body.password) {
+    if (!req.body.userName ||!req.body.email || !req.body.password) {
         res.render('index', {err: "Please provide all credentials"});
         return;
         }
@@ -75,9 +75,10 @@ await user.save().catch((reason) => {
 if (isDuplicate) {
     return
 }
-res.redirect(`/profile/?userName=${req.body.userName}`); //with redirect you are sending them to the url so need a /
+res.redirect(`/profile/?userName=${req.body.userName}`); 
+//with redirect you are sending them to the url so need a /
 //this is bringing up unique user profile pages.
-}) 
+}); 
 
 
 
