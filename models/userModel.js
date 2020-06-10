@@ -10,7 +10,7 @@ password: {type: String, required: true},
    } 
 });
 
-//whichever data you have in the form fields, need to be in the scheme as the database info
+//whatever data you have in the form fields, need to be in the scheme as the database info
 
 
 module.exports = model('users', user);
